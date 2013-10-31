@@ -34,6 +34,7 @@ a{
 .container{
 	width: @total-width;
 	margin: 0 auto;
+	overflow: auto;
 }
 
 
@@ -109,6 +110,115 @@ a.button{
 	padding: 50px 0px;
 }
 
+.appstats{
+	height: 150px;
+	background-color: @darkblue;
+}
+
+.bench{
+	background: @lightgrey;
+	padding-top: 50px;
+}
+
+// ----------------------- TEST CARD ------------------
+
+.testcard{
+	background: #FFF;
+	.border-radius(4px 4px 0px 0px);
+	.column(4);
+	.box-sizing(border-box);
+	margin-bottom: 20px;
+	*{
+		.box-sizing(border-box);
+	}
+	> header{
+		.border-radius(4px 4px 0px 0px);
+		background: @brightgreen;
+		width: 100%;
+		padding: 10px;
+		color: #FFF;
+		h2{
+			text-transform: uppercase;
+			font: normal 500 14px @roboto;
+			text-align: center;
+			width: 100%;
+			padding-bottom: 5px; 
+			border-bottom: solid 1px #FFF;
+		}
+		.resume{
+			overflow: auto;
+			padding: 10px 0px;
+			> div{
+				width: 25%;
+				float: left;
+				text-align: center;
+				font: normal 200 28px @roboto;
+				p:last-of-type{
+					font: normal 400 13px @robotocondensed;
+					color: @darkblue;
+				}
+			}
+		}
+	}
+	.results{
+		ul{
+			display: block;
+			width: 100%;
+			li{
+				display: block;
+				width: 100%;
+				overflow: auto;
+				height: 30px;
+				p.composant{
+					float: left;
+					.column(1);
+					text-align: right;
+					font: normal 400 10px/30px @robotocondensed;
+					vertical-align: middle;
+					color: @mediumgrey;
+				}
+				div.bar-container{
+					.column(2);
+					margin: 0;
+					float: left;
+					height: 30px;
+					padding: 12px 0px;
+					span.bar{
+						display: block;
+						width: 100%;
+						height: 6px;
+						background: @brightgreen;
+					}
+				}
+				p.value{
+					.column(1);
+					font: normal 600 12px/30px @robotocondensed;
+					color: @brightgreen;
+				}
+			}
+
+		}	
+	}
+}
+
+// ----------------------- MAIN NAV -------------------
+
+
+.mainnav{
+	border-bottom: solid 6px @darkblue;
+	padding: 15px 0px;
+	h1 a{
+		color: @darkblue;
+		font: normal 700 20px @roboto;
+		.transition(color 0.15s ease);
+		span{
+			font-weight: 300;
+		}
+		&:hover{
+			color: @brightgreen;
+		}
+	}
+}
 
 
 // ----------------------- FOOTER ---------------------
