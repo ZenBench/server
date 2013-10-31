@@ -5,7 +5,11 @@
 # Home page
 GET     /                           controllers.Application.index
 GET     /home                       controllers.Application.home
-GET     /yeah                       controllers.Application.yeah
+
+GET     /test/runs                  controllers.Application.runs
+GET     /test/tests                 controllers.Application.tests
+GET     /test/benchs                controllers.Application.benchs
+GET     /test/preparedTests         controllers.Application.prepareTests
 
 ->      /tests                      controllers.Tests
 ->      /runs                       controllers.Runs
