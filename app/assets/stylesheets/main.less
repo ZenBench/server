@@ -164,11 +164,13 @@ a.button{
 		ul{
 			display: block;
 			width: 100%;
+			padding: 10px 0px;
 			li{
 				display: block;
 				width: 100%;
 				overflow: auto;
 				height: 30px;
+				.transition(all 0.2s ease);
 				p.composant{
 					float: left;
 					.column(1);
@@ -194,6 +196,10 @@ a.button{
 					.column(1);
 					font: normal 600 12px/30px @robotocondensed;
 					color: @brightgreen;
+				}
+				&:hover{
+					background: fadeout(@lightgrey, 40%);
+					cursor: pointer;
 				}
 			}
 
