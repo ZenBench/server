@@ -89,10 +89,10 @@ object Runs {
               count + v.count
             )
           }
-          Test(test.id, test.description, test.types, min, sum / values.size, max, count, values.sortWith((t1, t2) => t1.mean < t2.mean))
+          Test(test.id, test.description, test.types, min, sum / values.size, max, count, values.sortWith((t1, t2) => t1.mean > t2.mean))
         }
       }
-    }.flatten.sortWith( (t1, t2) => t1.id < t2.id )
+    }.flatten.sortWith( (t1, t2) => t1.bench.size > t2.bench.size )
   }
 
   def hosts: Future[Seq[(String, String)]] = extractRuns.map { runs =>

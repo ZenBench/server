@@ -11,8 +11,8 @@ object Application extends Controller {
     Ok(views.html.index())
   }
 
-  def home = Action {
-    Ok(views.html.home())
+  def home = Action.async {
+    db.Runs.preparedTests.map{ runs => Ok(views.html.home(runs)) }
   }
 
 
