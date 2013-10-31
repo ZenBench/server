@@ -1,0 +1,10 @@
+{
+  "id": "Super PC",
+  "bench": [
+    { "test": "test1", "types": "cpu", "ref": "i5-2334", "mean": 2131, "count": 42 }
+    { "test": "test2", "types": "cpu", "ref": "i5-2334", "mean": 2131, "count": 41 }
+    { "test": "test3", "types": "ram", "ref": "CMZ8GX3M2A1600C9", "mean": 2131, "count": 56 }
+    { "test": "test4", "types": "disk", "ref": "MZ-7TD250BW", "mean": 2131, "count": 23 }
+  ],
+  "runs": ["12312312", "12412312", "13212312"]
+ }

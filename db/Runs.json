@@ -1,0 +1,15 @@
+{
+  "id": "toto@zappos.com",
+  "host": "toto",
+  "env": [
+    { "types": "cpu", "ref": "i5-3550"},
+    { "types": "ram", "ref": "CMZ8GX3M2A1600C9", "type": "DDR3", "speed": "PC17066", "timing": "CAS 11", "quantity": "16GO"},
+    { "types": "disk", "ref": "MZ-7TD250BW"}
+  ],
+  "metrics": [
+    { "id": "test1", "value": "255666"},
+    { "id": "test2", "value": "256"},
+    { "id": "test3", "value": "22156"},
+    { "id": "test4", "value": "25116"}
+  ]
+}

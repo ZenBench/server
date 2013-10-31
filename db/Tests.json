@@ -1,0 +1,13 @@
+{
+  "id": "test1",
+  "name": "Test de processor 12",
+  "types": "cpu",
+  "bench": [
+    {
+      "ref": "",
+      "mean": 121231131,
+      "count": 2133,
+      "runs": ["12312312", "12412312", "13212312"]
+    }
+  ]
+ }
