@@ -34,13 +34,17 @@ object Application extends Controller {
     )
   }
 
-  def prepareTests = Action.async {
-    db.Runs.prepareTests.map( runs =>
+  def hosts = Action.async {
+    db.Runs.hosts.map( runs => Ok(runs.toString) )
+  }
+
+  def preparedTests = Action.async {
+    db.Runs.preparedTests.map( runs =>
       Ok(runs.toString)
     )
   }
 
-  def hosts(host: String) = Action.async {
-    db.Runs.prepareHost(host).map( host => Ok(host.toString) )
+  def preparedHost(host: String) = Action.async {
+    db.Runs.preparedHost(host).map( host => Ok(host.toString) )
   }
 }

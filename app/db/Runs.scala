@@ -73,7 +73,7 @@ object Runs {
     }
   }
 
-  def prepareTests: Future[Seq[Test]] = {
+  def preparedTests: Future[Seq[Test]] = {
     val tests = extractTests
     for{
       t <- tests
@@ -95,5 +95,9 @@ object Runs {
     }.flatten.sortWith( (t1, t2) => t1.id < t2.id )
   }
 
-  def prepareHost(host: String): Future[Host] = prepareBenchs({ i => i.host == host }).map( Host(host, _) )
+  def hosts: Future[Seq[(String, String)]] = extractRuns.map { runs =>
+    runs.map( r => (r.id, r.host)).distinct
+  }
+
+  def preparedHost(host: String): Future[Host] = prepareBenchs({ i => i.host == host }).map( Host(host, _) )
 }
