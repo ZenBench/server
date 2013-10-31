@@ -23,7 +23,7 @@ object Application extends Controller {
   }
 
   def tests = Action.async {
-    db.Runs.extractRuns.map( runs =>
+    db.Runs.extractTests.map( runs =>
       Ok(runs.toString)
     )
   }
