@@ -9,8 +9,9 @@ GET     /home                       controllers.Application.home
 GET     /test/runs                  controllers.Application.runs
 GET     /test/tests                 controllers.Application.tests
 GET     /test/benchs                controllers.Application.benchs
-GET     /test/preparedTests         controllers.Application.prepareTests
-GET     /test/hosts/:host           controllers.Application.hosts(host: String)
+GET     /test/hosts                 controllers.Application.hosts
+GET     /test/preparedTests         controllers.Application.preparedTests
+GET     /test/hosts/:host           controllers.Application.preparedHost(host: String)
 
 ->      /tests                      controllers.Tests
 ->      /runs                       controllers.Runs
