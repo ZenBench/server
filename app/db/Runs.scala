@@ -12,14 +12,9 @@ import play.modules.reactivemongo.json.collection.JSONCollection
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import play.api.Play.current
-
 import scala.concurrent.Future
 
-
-case class Bench(test: String, types: String, ref: String, mean: Long, count: Long)
-
-case class Test(id: String, name: String, types: String, bench: Seq[Bench])
-case class Host(id: String, bench: Seq[Bench])
+import models._
 
 object Runs {
   lazy val collectionRuns = ReactiveMongoPlugin.db.collection[JSONCollection]("runs")
@@ -52,9 +47,8 @@ object Runs {
     }
   }
 
-  def prepareRuns(f: InnerRuns => Boolean = { _ => true } ): Future[Seq[Bench]] = {
+  def prepareBenchs(f: InnerRuns => Boolean = { _ => true }, tests: Future[Map[String, InnerTest]] = extractTests ): Future[Seq[Bench]] = {
     val runs = extractRuns
-    val tests = extractTests
 
     for {
       r <- runs
@@ -62,10 +56,11 @@ object Runs {
     } yield {
       r.filter(f).map { run =>
         val typeRef = run.env.map{ e => (e.types, e.ref) }.toMap
+
         run.metrics.map{ m =>
           for {
             test <- t.get(m.id)
-            ref  <- typeRef.get(test.id)
+            ref  <- typeRef.get(test.types)
           } yield Bench(test.id, test.types, ref, m.value.toLong, 1)
         }
       }.flatten
@@ -76,5 +71,27 @@ object Runs {
           Bench(k._1, k._2, k._3, sum / values.size, values.size)
        }
     }
+  }
+
+  def prepareTests: Future[Seq[Test]] = {
+    val tests = extractTests
+    for{
+      t <- tests
+      b <- prepareBenchs( tests = tests )
+    } yield {
+      b.groupBy[String]( b => b.test ).toSeq.map{ case (key, values) =>
+        t.get(key).map { test =>
+          val (min, max, sum, count) = values.foldLeft[(Long, Long, Long, Long)]((Long.MaxValue, Long.MinValue, 0, 0)){ case ((mi, ma, sum, count), v) =>
+            (
+              if( v.mean < mi ) v.mean else mi,
+              if( v.mean > ma ) v.mean else ma,
+              sum + v.mean,
+              count + v.count
+            )
+          }
+          Test(test.id, test.description, test.types, min, sum / values.size, max, count, values.sortWith((t1, t2) => t1.mean < t2.mean))
+        }
+      }
+    }.flatten.sortWith( (t1, t2) => t1.id < t2.id )
   }
 }

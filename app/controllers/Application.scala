@@ -16,10 +16,27 @@ object Application extends Controller {
   }
 
 
-  def yeah = Action { Async{
+  def runs = Action.async {
     db.Runs.extractRuns.map( runs =>
       Ok(runs.toString)
     )
-  }}
+  }
 
+  def tests = Action.async {
+    db.Runs.extractRuns.map( runs =>
+      Ok(runs.toString)
+    )
+  }
+
+  def benchs = Action.async {
+    db.Runs.prepareBenchs().map( runs =>
+      Ok(runs.toString)
+    )
+  }
+
+  def prepareTests = Action.async {
+    db.Runs.prepareTests.map( runs =>
+      Ok(runs.toString)
+    )
+  }
 }
