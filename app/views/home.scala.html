@@ -46,7 +46,7 @@
 						<ul>
 							@test.bench.map{ b =>
 								<li>
-									<p class="composant">Toto</p>
+									<p class="composant">@b.ref</p>
 									<div class="bar-container">
 										<span class="bar" style="width:@width(test.max, b.mean)%"></span>
 									</div>
