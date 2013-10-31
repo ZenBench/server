@@ -1,3 +1,125 @@
-body{
-  background-color: black;
+@import "_reset.less";
+@import "_grid.less";
+@import "_utils.less";
+
+
+@import url("http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic|Roboto+Condensed:300italic,400italic,700italic,400,300,700|Roboto+Slab:400,100,300,700");
+
+
+@columns: 12;
+@column-width: 65;
+@gutter-width: 20;
+
+@darkestblue: #09302c;
+@darkblue: #1b534d;
+@brightgreen: #40c5b6;
+
+@lightgrey: #EDEDED;
+@mediumgrey: #999;
+@darkgrey: #444;
+
+
+@roboto: 'Roboto', sans-serif;
+@robotocondensed: 'Roboto Condensed', sans-serif;
+@robotoslab: 'Roboto Slab', serif;
+
+body, html{
+	width: 100%;
 }
+
+a{
+	text-decoration: none;
+}
+
+.container{
+	width: @total-width;
+	margin: 0 auto;
+}
+
+
+
+
+.poster{
+	height: 400px;
+	background: url("/assets/images/background-zenbench.jpg") no-repeat 50% 50%;
+	background-size: cover;
+	padding-top: 180px;
+	text-align: center;
+	h1{
+		font: normal 700 96px @roboto;
+		color: #FFF;
+		span{
+			font-weight: 100;
+		}
+	}
+	h2{
+		font: normal 300 36px @robotoslab;
+		color: @darkestblue;
+	}
+}
+
+blockquote{
+	background: @darkblue;
+	color: #FFF;
+	text-align: center;
+	padding: 40px;
+	font: normal 300 26px @robotoslab;
+	> footer{
+		font: italic 300 16px @robotocondensed;
+		margin-top: 10px;
+	}
+}
+
+
+
+a.button{
+	display: block;
+	background: #FFF;
+	color: @darkblue;
+	text-transform: uppercase;
+	text-align: center;
+	vertical-align: middle;
+	border: solid 1px @darkblue;
+	.border-radius(4px);
+	.transition(all 0.15s ease);
+	&.big{
+		.column(4);
+		height: 80px;
+		font: normal 300 18px/80px @roboto;
+	}
+	&:hover,&:focus, &:active{
+		outline: 0;
+		background: @darkblue;
+		color: #FFF;
+	}
+}
+
+.buttons{
+	overflow: auto;
+	padding: 100px 0px;
+	.button.left{
+		.push(1);
+		.pull(2);
+	}
+}
+
+
+.search{
+	background: @lightgrey;
+	padding: 50px 0px;
+}
+
+
+
+// ----------------------- FOOTER ---------------------
+
+
+body > footer{
+	padding: 20px;
+	background: @lightgrey;
+	color: @mediumgrey;
+	font: normal 400 11px @roboto;
+	text-align: center;
+}
+
+

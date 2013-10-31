@@ -1,0 +1,55 @@
+.border-radius(@arguments) {
+    -webkit-border-radius: @arguments;
+    -moz-border-radius: @arguments;
+    border-radius: @arguments;
+}
+
+.box-sizing(@arg) {
+    -moz-box-sizing:@arguments;
+    -webkit-box-sizing:@arguments;
+    -o-box-sizing:@arguments;
+    -ms-box-sizing:@arguments;
+    box-sizing:@arguments;
+}
+
+.gradient(@from:#000, @to:#EEE, ) {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(@from), to(@to));
+    background-image: -moz-linear-gradient(top, @from, @to);
+    filter: formatstring("progid:DXImageTransform.Microsoft.gradient(startColorstr='{0}', endColorstr='{1}')", @from, @to); /* IE6,IE7 */
+    -ms-filter: formatstring("\"progid:DXImageTransform.Microsoft.gradient(startColorStr='{0}', EndColorStr='{1}')\"", @from, @to); /* IE8 */
+}
+
+.ellipsis() {
+   white-space: nowrap;
+   text-overflow: ellipsis;
+   overflow: hidden;
+}
+
+.transition(@arg) {
+    -moz-transition: @arg;
+    -webkit-transition: @arg;
+    -o-transition: @arg;
+    transition: @arg;
+}
+
+.transform(@arg){
+    transform: @arg;
+    -ms-transform:@arg;
+    -webkit-transform:@arg;
+}
+
+.perspective(@arg) {
+    perspective: @arg;
+    -moz-perspective: @arg;
+    -ms-perspective: @arg;
+    -o-perspective: @arg;
+    -webkit-perspective: @arg;
+}
+
+.transform-style(@arg) {
+    transform-style: @arg;
+    -moz-transform-style: @arg;
+    -ms-transform-style: @arg;
+    -o-transform-style: @arg;
+    -webkit-transform-style: @arg;
+}
