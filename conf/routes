@@ -10,6 +10,7 @@ GET     /test/runs                  controllers.Application.runs
 GET     /test/tests                 controllers.Application.tests
 GET     /test/benchs                controllers.Application.benchs
 GET     /test/preparedTests         controllers.Application.prepareTests
+GET     /test/hosts/:host           controllers.Application.hosts(host: String)
 
 ->      /tests                      controllers.Tests
 ->      /runs                       controllers.Runs

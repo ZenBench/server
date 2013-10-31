@@ -39,4 +39,8 @@ object Application extends Controller {
       Ok(runs.toString)
     )
   }
+
+  def hosts(host: String) = Action.async {
+    db.Runs.prepareHost(host).map( host => Ok(host.toString) )
+  }
 }

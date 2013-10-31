@@ -94,4 +94,6 @@ object Runs {
       }
     }.flatten.sortWith( (t1, t2) => t1.id < t2.id )
   }
+
+  def prepareHost(host: String): Future[Host] = prepareBenchs({ i => i.host == host }).map( Host(host, _) )
 }
