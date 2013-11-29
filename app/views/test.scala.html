@@ -5,41 +5,51 @@
 
 @main("Welcome to ZenBench") {
 
-<div class="testcard" id="test" data-id="@test.id">
-	<header>
-		<h2>@test.name</h2>
-		<div class="resume">
-			<div>
-				<p>@test.bench.size</p>
-				<p>composants</p>
+<div class="mainnav">
+	<div class="container">
+		<h1><a href="@routes.Application.index"><span>ZEN</span>BENCH</a></h1>
+	</div>
+
+</div>
+
+
+<div class="bench container">
+	<div class="testcard" id="test" data-id="@test.id">
+		<header>
+			<h2>@test.name</h2>
+			<div class="resume">
+				<div>
+					<p>@test.bench.size</p>
+					<p>composants</p>
+				</div>
+				<div>
+					<p>@test.count</p>
+					<p>run</p>
+				</div>
+				<div>
+					<p>@test.mean</p>
+					<p>moyenne</p>
+				</div>
+				<div>
+					<p>@test.max</p>
+					<p>valeur maxi</p>
+				</div>
 			</div>
-			<div>
-				<p>@test.count</p>
-				<p>run</p>
-			</div>
-			<div>
-				<p>@test.mean</p>
-				<p>moyenne</p>
-			</div>
-			<div>
-				<p>@test.max</p>
-				<p>valeur maxi</p>
-			</div>
-		</div>
-	</header>
-	<div class="results">
-    <ul>
-	    @test.bench.map{ b =>
-	    <li class="component-item" data-ref="@b.ref">
-		    <p class="composant">@short_cpu_name(b.ref)</p>
-		    <div class="bar-container">
-			    <span class="bar" style="width:@width(test.max, b.mean)%"></span>
-		    </div>
-		    <p class="value">@b.mean</p>
-	    </li>
-	    }
-    </ul>
-  </div>
+		</header>
+		<div class="results">
+	    <ul>
+		    @test.bench.map{ b =>
+		    <li class="component-item" data-ref="@b.ref">
+			    <p class="composant">@short_cpu_name(b.ref)</p>
+			    <div class="bar-container">
+				    <span class="bar" style="width:@width(test.max, b.mean)%"></span>
+			    </div>
+			    <p class="value">@b.mean</p>
+		    </li>
+		    }
+	    </ul>
+	  </div>
+	</div>
 </div>
 <script src="@routes.Assets.at("javascripts/test.js")" type="text/javascript"></script>
 }
