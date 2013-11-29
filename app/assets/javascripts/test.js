@@ -6,22 +6,31 @@ $(function(){
     })
 
     function runsByComponent(ref, id, data){
-        var filtered = data.filter(function(run){
+        var tmp_div,
+            fragment = document.createDocumentFragment(),
+            filtered = data.filter(function(run){
             return run.env.some(function(element){
                 return element.ref === ref;
             }) && run.metrics.some(function(element){
                 return element.id === id;
             });
         });
-        alert(JSON.stringify(filtered));
-        getRuns(runEnv.bind(null, filtered[0].id));
+                
+/*        filtered.map(function(element){
+            tmp_div = document.createElement('div');
+            tmp_div.id = element.id;
+            tmp_div.innerHtml = $('#results ul li').html();
+            tmp_div.textContent = element.id;
+            $(tmp_div).on('click', getRuns(runEnv.bind(null, filtered[0].id)));
+            fragment.appendChild(tmp_div);
+        });*/
+
     }
     
     function runEnv(runId, data){
         var filtered = data.filter(function(run){
             return run.id === runId;
         });
-        alert(JSON.stringify(filtered));
     }
 
     function getRuns(callback){
