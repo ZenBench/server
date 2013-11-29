@@ -1,5 +1,6 @@
 @(tests: Seq[Test])
 
+@import utils.Filters._
 @width(max: Long, value: Long) = @{( value * 100 ) / max }
 
 @main("Welcome to ZenBench") {
@@ -46,7 +47,7 @@
 						<ul>
 							@test.bench.map{ b =>
 								<li>
-									<p class="composant">@b.ref</p>
+									<p class="composant">@short_cpu_name(b.ref)</p>
 									<div class="bar-container">
 										<span class="bar" style="width:@width(test.max, b.mean)%"></span>
 									</div>

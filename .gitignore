@@ -12,3 +12,7 @@ project/plugins/project/
 # Scala-IDE specific
 .scala_dependencies
 app/assets/.DS_Store
+
+# Emacs
+*\~
+\#*\#
