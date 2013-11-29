@@ -5,6 +5,7 @@
 # Home page
 GET     /                           controllers.Application.index
 GET     /home                       controllers.Application.home
+GET     /test/:ref                  controllers.Application.test(ref: String)
 
 GET     /test/runs                  controllers.Application.runs
 GET     /test/tests                 controllers.Application.tests

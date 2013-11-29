@@ -15,6 +15,11 @@ object Application extends Controller {
     db.Runs.preparedTests.map{ runs => Ok(views.html.home(runs)) }
   }
 
+  def test(ref: String) = Action.async {
+    for {
+      test <- db.Runs.getTest(ref)
+    } yield Ok(views.html.test(test))
+  }
 
   def runs = Action.async {
     db.Runs.extractRuns.map( runs =>

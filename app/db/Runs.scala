@@ -100,4 +100,23 @@ object Runs {
   }
 
   def preparedHost(host: String): Future[Host] = prepareBenchs({ i => i.host == host }).map( Host(host, _) )
+
+  def getTest(id: String): Future[Test] = {
+    for {
+      t <- extractTests
+      b <- prepareBenchs()
+    } yield {
+      val values = b.filter(bench => bench.test == id)
+      val test = t(id)
+      val (min, max, sum, count) = values.foldLeft[(Long, Long, Long, Long)]((Long.MaxValue, Long.MinValue, 0, 0)){ case ((mi, ma, sum, count), v) =>
+        (
+          if( v.mean < mi ) v.mean else mi,
+          if( v.mean > ma ) v.mean else ma,
+          sum + v.mean,
+          count + v.count
+        )
+      }
+      Test(test.id, test.description, test.types, min, sum / values.size, max, count, values.sortWith((t1, t2) => t1.mean > t2.mean))
+    }
+  }
 }

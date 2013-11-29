@@ -21,6 +21,7 @@
 	@tests.grouped(3).map{ group =>
 		<div class="container">
 			@group.map{ test =>
+      <a href="@routes.Application.test(test.id)">
 				<div class="testcard">
 					<header>
 						<h2>@test.name</h2>
@@ -57,6 +58,7 @@
 						</ul>
 					</div>
 				</div>
+</a>
 			}
 		</div>
 	}
