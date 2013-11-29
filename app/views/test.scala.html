@@ -1,7 +1,45 @@
 @(test: Test)
 
 @import utils.Filters._
+@width(max: Long, value: Long) = @{( value * 100 ) / max }
 
 @main("Welcome to ZenBench") {
-<h1>@test.name</h1>
+
+<div class="testcard" id="test" data-id="@test.id">
+	<header>
+		<h2>@test.name</h2>
+		<div class="resume">
+			<div>
+				<p>@test.bench.size</p>
+				<p>composants</p>
+			</div>
+			<div>
+				<p>@test.count</p>
+				<p>run</p>
+			</div>
+			<div>
+				<p>@test.mean</p>
+				<p>moyenne</p>
+			</div>
+			<div>
+				<p>@test.max</p>
+				<p>valeur maxi</p>
+			</div>
+		</div>
+	</header>
+	<div class="results">
+    <ul>
+	    @test.bench.map{ b =>
+	    <li class="component-item" data-ref="@b.ref">
+		    <p class="composant">@short_cpu_name(b.ref)</p>
+		    <div class="bar-container">
+			    <span class="bar" style="width:@width(test.max, b.mean)%"></span>
+		    </div>
+		    <p class="value">@b.mean</p>
+	    </li>
+	    }
+    </ul>
+  </div>
+</div>
+<script src="@routes.Assets.at("javascripts/test.js")" type="text/javascript"></script>
 }
