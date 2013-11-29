@@ -10,6 +10,8 @@
 @column-width: 65;
 @gutter-width: 20;
 
+@total-width: 100%;
+
 @darkestblue: #09302c;
 @darkblue: #1b534d;
 @brightgreen: #40c5b6;
@@ -33,6 +35,7 @@ a{
 
 .container{
 	width: @total-width;
+	min-width: 1020px;
 	margin: 0 auto;
 	overflow: auto;
 }
@@ -55,7 +58,7 @@ a{
 	}
 	h2{
 		font: normal 300 36px @robotoslab;
-		color: @darkestblue;
+		color: #FFF;
 	}
 }
 
@@ -124,7 +127,7 @@ a.button{
 
 .testcard{
 	background: #FFF;
-	.border-radius(4px 4px 0px 0px);
+	.border-radius(4px);
 	.column(4);
 	.box-sizing(border-box);
 	margin-bottom: 20px;
@@ -135,24 +138,23 @@ a.button{
 		.border-radius(4px 4px 0px 0px);
 		background: @brightgreen;
 		width: 100%;
-		padding: 10px;
+		//padding: 10px;
 		color: #FFF;
 		h2{
 			text-transform: uppercase;
-			font: normal 500 14px @roboto;
+			font: normal 500 18px @roboto;
 			text-align: center;
 			width: 100%;
-			padding-bottom: 5px;
+			padding: 10px 20px;
 			border-bottom: solid 1px #FFF;
 		}
 		.resume{
 			overflow: auto;
 			padding: 10px 0px;
 			> div{
-				width: 25%;
-				float: left;
+				.column(1,4);
 				text-align: center;
-				font: normal 200 28px @roboto;
+				font: normal 200 24px @roboto;
 				p:last-of-type{
 					font: normal 400 13px @robotocondensed;
 					color: @darkblue;
@@ -174,15 +176,14 @@ a.button{
 				p.composant{
 					.ellipsis();
 					float: left;
-					.column(1);
-					text-align: right;
+					.column(1,4);
 					font: normal 400 10px/30px @robotocondensed;
 					vertical-align: middle;
 					color: @mediumgrey;
 				}
 				div.bar-container{
-					.column(2);
-					margin: 0;
+					.column(2,4);
+					//margin: 0;
 					float: left;
 					height: 30px;
 					padding: 12px 0px;
@@ -194,9 +195,10 @@ a.button{
 					}
 				}
 				p.value{
-					.column(1);
+					.column(1,4);
 					font: normal 600 12px/30px @robotocondensed;
 					color: @brightgreen;
+					text-align: right;
 				}
 				&:hover{
 					background: fadeout(@lightgrey, 40%);
@@ -212,8 +214,9 @@ a.button{
 
 
 .mainnav{
+	//.column(12);
 	border-bottom: solid 6px @darkblue;
-	padding: 15px 0px;
+	padding: 20px;
 	h1 a{
 		color: @darkblue;
 		font: normal 700 20px @roboto;
